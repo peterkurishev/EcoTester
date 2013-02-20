@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 #include <QSqlDatabase>
 #include "ui_mainwindow.h"
 #include <QQueue>
@@ -18,7 +18,7 @@ public slots:
     void answerSelected();
     void cheatMode();
 public:
-    MainWindow(QWidget *parent = 0, Qt::WFlags flags = 0);
+    MainWindow(QWidget *parent = 0, Qt::WindowFlags flags = 0);
     ~MainWindow();
     void setDatabase(QSqlDatabase* db);
     void setReportView(ReportViewDialog* rvd) {

@@ -1,7 +1,7 @@
 #ifndef PERSONALDATADIALOG_H
 #define PERSONALDATADIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 
 namespace Ui {
     class PersonalDataDialog;

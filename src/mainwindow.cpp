@@ -3,7 +3,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
+MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags), _ticketId(0), _testId(0), _answerNumber(0)
 {
     ui.setupUi(this);

@@ -1,10 +1,9 @@
 #ifndef REPORTVIEWDIALOG_H
 #define REPORTVIEWDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include <QSqlDatabase>
 #include <QPrinter>
-//#include <Q
 
 namespace Ui {
     class ReportViewDialog;

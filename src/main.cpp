@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "mainwindow.h"
 #include "choosetest.h"
 #include <QSqlDatabase>
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     bool IsTeachingMode = false;    // Включен ли режим обучения?
 
     // После нижеследующей строки можно использовать русский текст в UTF-8
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF-8") );
+//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("UTF-8") );
 
     // Открываем базу данных
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");

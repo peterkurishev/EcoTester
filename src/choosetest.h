@@ -1,7 +1,7 @@
 #ifndef CHOOSETEST_H
 #define CHOOSETEST_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QListWidgetItem>
