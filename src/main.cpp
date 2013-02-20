@@ -32,6 +32,10 @@ int main(int argc, char *argv[])
     PersonalDataDialog pd;
     unsigned int testeeId = 0;
     int rc = pd.exec();
+    if(!rc) {
+        exit(0);
+    }
+
     if(pd.isTeachingMode()) {
         IsTeachingMode = pd.isTeachingMode();
     }
