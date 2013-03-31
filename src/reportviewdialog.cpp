@@ -30,15 +30,36 @@ void ReportViewDialog::changeEvent(QEvent *e)
 }
 
 void ReportViewDialog::produceHtmlReport(QSqlDatabase* db, int testeeId, bool IsPassed) {
-QString request = QString("select t.name, t.position, t.company, ti.name, tsts.name from testees t, tickets ti, tests tsts where t.test_id = tsts.id and t.ticket_id = ti.id and t.id=:tt");
-QSqlQuery query(*db);
-query.prepare(request);
-query.bindValue(":tt", testeeId);
-query.exec();
-query.next();
+    QString request = QString("select t.name, t.position, t.company, ti.name, tsts.name from testees t, \
+            tickets ti, tests tsts where t.test_id = tsts.id and t.ticket_id = ti.id and t.id=:tt");
+
+    QString answers_log_request = QString("SELECT qs.question, al.answer_id, qs.answer1, qs.answer2, qs.answer3, qs.answer4, qs.answer5 \
+                                          FROM answer_log al, questions_simple qs \
+                                          WHERE al.testee_id = :tt and al.question_id = qs.id");
+
+
+    QSqlQuery query(*db);
+    QSqlQuery query2(*db);
+    query.prepare(request);
+    query.bindValue(":tt", testeeId);
+    query.exec();
+    query.next();
+
+    query2.prepare(answers_log_request);
+    query2.bindValue(":tt", testeeId);
+    query2.exec();
+
+    QString answers;
+
+    while (query2.next()) {
+//        int answer_id =
+        answers = answers + QString("<strong>Вопрос: %1</strong><br><p>Ответ: %2</p>").arg(query2.value(0).toString()).arg(query2.value(query2.value(1).toInt()+1).toString());
+    }
+
+
 
 QDate date = QDate::currentDate();
-    QString ReportHtml = QString("<html><body><h1><font size=\"+4B\">Результаты тестирования</font></h1><font size=\"+3\">ФИО: %1<br>Должность: %2<br>Организация:%3<br>%4<br>%5<br>%6.<br><br><br>С результатами тестирования ознакомлен <br><br>____________________________ (%1)<br>Дата проведения теста: %7</font></body></html>").arg(query.value(0).toString()).arg(query.value(1).toString()).arg(query.value(2).toString()).arg(query.value(4).toString()).arg(query.value(3).toString()).arg(IsPassed?QString("Тест пройден"):QString("Тест не пройден")).arg(date.toString("dd.MM.yyyy"));
+QString ReportHtml = QString("<html><body><h1><font size=\"+4B\">Результаты тестирования</font></h1><font size=\"+3\">ФИО: %1<br>Должность: %2<br>Организация:%3<br>%4<br>%5<br>%6.<br><br><br>С результатами тестирования ознакомлен <br><br>____________________________ (%1)<br>Дата проведения теста: %7</font><br>%8</body></html>").arg(query.value(0).toString()).arg(query.value(1).toString()).arg(query.value(2).toString()).arg(query.value(4).toString()).arg(query.value(3).toString()).arg(IsPassed?QString("Тест пройден"):QString("Тест не пройден")).arg(date.toString("dd.MM.yyyy")).arg(answers);
 
     m_ui->webView->setHtml(ReportHtml);
 }

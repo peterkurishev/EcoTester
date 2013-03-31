@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     if(i != 0) {
         t.close();
         int testId = t.getSelectedTestId();
-        printf("Selected id: %i\n", testId);
+        //printf("Selected id: %i\n", testId);
         MainWindow w;
         ReportViewDialog rv;
     if (!IsTeachingMode) {

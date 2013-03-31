@@ -81,7 +81,7 @@ void MainWindow::populateQuestions(int ticketId) {
         _questions.push_back(question);
     }
 
-    printf("Questions number: %d\n", _questions.size());
+    //printf("Questions number: %d\n", _questions.size());
     if(_questions.size() <= 0) {
         QMessageBox::critical(0, "Ошибка работы с базой данных", "не могу выбрать вопросы для билета номер "+QVariant(ticketId).toString()+ "!");
         exit(10004);
