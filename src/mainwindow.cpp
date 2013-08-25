@@ -182,7 +182,7 @@ void MainWindow::answerSelected() {
         int ii = q2.value(0).toInt();
         QString qq = q2.value(0).toString();
 
-        if(!this->isCheatMode && q2.value(0).toInt() > 0) {
+        if(!this->isCheatMode && q2.value(0).toInt() > 4) {
             QMessageBox::information(0, "Тестирование окончено", "К сожалению вы не прошли тест!", false);
             this->_repview->produceHtmlReport(_db, _testeeId,false);
         } else {

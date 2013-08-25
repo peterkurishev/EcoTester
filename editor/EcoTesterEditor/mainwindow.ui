@@ -453,7 +453,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QLineEdit" name="correctAnswer">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>510</x>
       <y>230</y>
       <width>41</width>
       <height>21</height>
@@ -485,7 +485,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

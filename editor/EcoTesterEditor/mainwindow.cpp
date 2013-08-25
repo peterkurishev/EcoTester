@@ -85,9 +85,27 @@ void MainWindow::on_toolButton_5_clicked()
 {
     tests_model->insertRow(ui->testsList->currentIndex().row()-1);
     tests_model->select();
+    //ui->testList->up
+
 }
 
 void MainWindow::on_ticketsList_activated(const QModelIndex &index)
 {
     question_model->setFilter(QString("id in (SELECT question_id FROM questions_in_tickets WHERE ticket_id=%1)").arg(index.sibling(index.row(),0).data().toInt()));
+}
+
+// Нажата кнопка добавления билета
+void MainWindow::on_toolButton_clicked()
+{
+  ticketsModel->insertRow(0);
+  QModelIndex index = ticketsModel->index(0,1);
+  ui->ticketsList->setCurrentIndex(index);
+  ticketsModel->setData(index, QVariant(12));
+  ui->ticketsList->edit(index);
+}
+
+// Нажата кнопка удаления билета (спросить согласие)
+void MainWindow::on_toolButton_2_clicked()
+{
+
 }

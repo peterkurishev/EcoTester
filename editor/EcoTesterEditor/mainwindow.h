@@ -33,6 +33,10 @@ private slots:
 
     void on_ticketsList_activated(const QModelIndex &index);
 
+    void on_toolButton_clicked();
+
+    void on_toolButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QDataWidgetMapper *questionMapper;
