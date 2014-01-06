@@ -182,12 +182,14 @@ void MainWindow::answerSelected() {
         int ii = q2.value(0).toInt();
         QString qq = q2.value(0).toString();
 
-        if(!this->isCheatMode && q2.value(0).toInt() > 4) {
+        int NUCorrectAnswers = q2.value(0).toInt();
+
+        if(!this->isCheatMode && NUCorrectAnswers > 4) {
             QMessageBox::information(0, "Тестирование окончено", "К сожалению вы не прошли тест!", false);
-            this->_repview->produceHtmlReport(_db, _testeeId,false);
+            this->_repview->produceHtmlReport(_db, _testeeId,false, int(100- q2.value(0).toInt() * 10));
         } else {
             QMessageBox::information(0, "Тестирование окончено", "Поздравляем! Вы успешно прошли тестирование!");
-            this->_repview->produceHtmlReport(_db, _testeeId, true);
+            this->_repview->produceHtmlReport(_db, _testeeId, true, int(100 - q2.value(0).toInt() * 10));
         }
 //        this->_repview->produceHtmlReport(_db, _testeeId);
         this->_repview->show();

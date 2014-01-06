@@ -15,7 +15,7 @@ class ReportViewDialog : public QDialog {
 public:
     explicit ReportViewDialog(QWidget *parent = 0);
     virtual ~ReportViewDialog();
-    void produceHtmlReport(QSqlDatabase* db, int testeeId, bool IsPassed=true);
+    void produceHtmlReport(QSqlDatabase* db, int testeeId, bool IsPassed=true, int percentage=100);
     void autoPrint();
 
 public slots:
